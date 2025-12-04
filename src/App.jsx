@@ -7,8 +7,11 @@ import Team from './components/Team';
 import Carousel from './components/Carousel';
 import FloatingNav from './components/FloatingNav';
 import PixelGrid from './components/PixelGrid';
+import { useTranslation } from 'react-i18next';
 
 function App() {
+  const { t } = useTranslation();
+
   return (
     <div className="min-h-screen bg-[#101010] relative">
       {/* Pixel Grid Decoration - Right Middle */}
@@ -76,13 +79,13 @@ function App() {
         <footer id="contact" className="min-h-screen border-t border-white/10 text-center text-gray-500 flex flex-col relative">
           {/* Main content - centered */}
           <div className="flex-1 flex flex-col items-center justify-start pt-20 pb-32">
-            <h2 className="text-3xl font-bold text-white mb-2">Ultimately, it's not a </h2>
-            <h1 className="text-8xl font-bold text-white mb-2">magic.</h1>
-            <p className="text-xl text-white">It's all skill, experience and dedication.</p>
+            <h2 className="text-3xl font-bold text-white mb-2">{t('footer.title')}</h2>
+            <h1 className="text-8xl font-bold text-white mb-2">{t('footer.magic')}</h1>
+            <p className="text-xl text-white">{t('footer.description')}</p>
           </div>
 
           {/* Copyright - fixed at bottom */}
-          <p className="absolute bottom-0 left-0 right-0 text-sm">© 2025 V8 Media Agency. All rights reserved.</p>
+          <p className="absolute bottom-0 left-0 right-0 text-sm">{t('footer.copyright')}</p>
         </footer>
       </div>
     </div>

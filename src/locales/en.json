@@ -1,0 +1,97 @@
+{
+  "navbar": {
+    "home": "Home",
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "team": "Team",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "We build",
+    "titleHighlight1": "high-",
+    "titleHighlight2": "performing marketing",
+    "titleRest": "engines and applications.",
+    "description": "We build, optimize, and scale marketing engines that generate pipeline and improve marketing ROI.",
+    "cta": "Discover more"
+  },
+  "results": {
+    "title": "Trusted by leading B2B companies to improve their",
+    "titleHighlight": "marketing",
+    "description": "Partnering with ambitious B2B brands worldwide to build scalable marketing engines and drive measurable ROI.",
+    "exploreButton": "Explore all results"
+  },
+  "services": {
+    "title": "Level up your",
+    "titleHighlight": "digital presence",
+    "description": "We help you level up your complete marketing engine. From strategy to content, advertising, and measurement.",
+    "items": {
+      "consulting": {
+        "title": "Consulting",
+        "description": "Strategic guidance to help your business navigate digital transformation and achieve sustainable growth."
+      },
+      "uxui": {
+        "title": "UX/UI Design",
+        "description": "Creating intuitive, user-centered designs that enhance engagement and deliver exceptional user experiences."
+      },
+      "ads": {
+        "title": "Advertising",
+        "description": "Data-driven advertising campaigns that maximize ROI and reach your ideal customers effectively."
+      },
+      "development": {
+        "title": "Development",
+        "description": "Custom mobile and web applications built for performance, scalability and exceptional user experience."
+      },
+      "ml": {
+        "title": "Machine Learning",
+        "description": "Leverage the power of AI and machine learning to automate processes and gain predictive insights for your business."
+      }
+    }
+  },
+  "carousel": {
+    "title": "Latest",
+    "titleHighlight": "Projects",
+    "description": "Discover how we can help transform your business",
+    "details": "Details"
+  },
+  "floatingNav": {
+    "tellUs": "Tell us about your needs",
+    "getStarted": "Let's get started!",
+    "getStartedDesc": "Please share a few basic details with us so we can start the conversation.",
+    "start": "Start",
+    "iNeedTo": "I need to...",
+    "whichExpert": "Which expert would you like to hire?",
+    "almostThere": "Almost there!",
+    "almostThereDesc": "Tell us a bit about yourself to wrap it up.",
+    "name": "Your name *",
+    "email": "Your email address",
+    "tellUsMore": "Tell us more (optional)",
+    "continue": "Continue",
+    "send": "Send",
+    "needOptions": [
+      "hire a dedicated designer or developer",
+      "build a new product (MVP)",
+      "give my website or app a fresh redesign",
+      "turn my idea into a clickable prototype",
+      "help with something else"
+    ],
+    "expertOptions": [
+      "UX Designer", "UI Designer", "Motion Designer",
+      "Front-End Developer", "Back-End Developer", "Project Manager",
+      "DevOps & Cloud", "QA tester"
+    ]
+  },
+  "team": {
+    "title": "Our team",
+    "heading": "An agile team of",
+    "headingHighlight": "specialists",
+    "headingRest": "in marketing and development",
+    "description": "We are a dedicated team of digital marketing and development specialists, offering customized solutions for businesses like yours. We adapt quickly to your needs and work closely with you to turn ideas into reality. Each member brings specific expertise and passion for innovative projects. Together, we have one goal: To build digital solutions that generate real results.",
+    "meetButton": "Meet the team"
+  },
+  "footer": {
+    "title": "Ultimately, it's not a",
+    "magic": "magic.",
+    "description": "It's all skill, experience and dedication.",
+    "copyright": "© 2025 V8 Media Agency. All rights reserved."
+  }
+}

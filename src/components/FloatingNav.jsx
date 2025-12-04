@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronRight, ChevronLeft, Check, Menu, Minus } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const FloatingNav = () => {
+  const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [step, setStep] = useState(0);
   const [showNav, setShowNav] = useState(false);
@@ -99,19 +101,9 @@ const FloatingNav = () => {
     }
   };
 
-  const needOptions = [
-    "hire a dedicated designer or developer",
-    "build a new product (MVP)",
-    "give my website or app a fresh redesign",
-    "turn my idea into a clickable prototype",
-    "help with something else"
-  ];
-
-  const expertOptions = [
-    "UX Designer", "UI Designer", "Motion Designer",
-    "Front-End Developer", "Back-End Developer", "Project Manager",
-    "DevOps & Cloud", "QA tester"
-  ];
+  // Get options from translations
+  const needOptions = t('floatingNav.needOptions', { returnObjects: true });
+  const expertOptions = t('floatingNav.expertOptions', { returnObjects: true });
 
   const renderStep = () => {
     switch (step) {
@@ -123,15 +115,15 @@ const FloatingNav = () => {
             exit={{ opacity: 0, x: -20 }}
             className="text-center"
           >
-            <h3 className="text-3xl font-bold mb-4">Let's get started!</h3>
+            <h3 className="text-3xl font-bold mb-4">{t('floatingNav.getStarted')}</h3>
             <p className="text-gray-400 mb-8 max-w-sm mx-auto">
-              Please share a few basic details with us so we can start the conversation.
+              {t('floatingNav.getStartedDesc')}
             </p>
             <button
               onClick={() => setStep(1)}
               className="bg-white text-black text-lg font-bold py-4 px-12 rounded-full hover:bg-gray-200 transition-colors w-full md:w-auto"
             >
-              Start
+              {t('floatingNav.start')}
             </button>
           </motion.div>
         );
@@ -143,7 +135,7 @@ const FloatingNav = () => {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -20 }}
           >
-            <h3 className="text-2xl font-bold mb-6">I need to...</h3>
+            <h3 className="text-2xl font-bold mb-6">{t('floatingNav.iNeedTo')}</h3>
             <div className="space-y-3 mb-8 max-h-[40vh] overflow-y-auto pr-2 custom-scrollbar">
               {needOptions.map((option, idx) => (
                 <div
@@ -169,7 +161,7 @@ const FloatingNav = () => {
               disabled={needs.length === 0}
               className="bg-white text-black font-bold py-3 px-8 rounded-full hover:bg-gray-200 transition-colors disabled:opacity-50 disabled:cursor-not-allowed w-full"
             >
-              Continue
+              {t('floatingNav.continue')}
             </button>
           </motion.div>
         );
@@ -181,7 +173,7 @@ const FloatingNav = () => {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -20 }}
           >
-            <h3 className="text-2xl font-bold mb-6">Which expert would you like to hire?</h3>
+            <h3 className="text-2xl font-bold mb-6">{t('floatingNav.whichExpert')}</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-8 max-h-[40vh] overflow-y-auto pr-2 custom-scrollbar">
               {expertOptions.map((option, idx) => (
                 <div
@@ -206,7 +198,7 @@ const FloatingNav = () => {
               disabled={experts.length === 0}
               className="bg-white text-black font-bold py-3 px-8 rounded-full hover:bg-gray-200 transition-colors disabled:opacity-50 disabled:cursor-not-allowed w-full"
             >
-              Continue
+              {t('floatingNav.continue')}
             </button>
           </motion.div>
         );
@@ -218,12 +210,12 @@ const FloatingNav = () => {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -20 }}
           >
-            <h3 className="text-2xl font-bold mb-6">Almost there!</h3>
-            <p className="text-gray-400 mb-6">Tell us a bit about yourself to wrap it up.</p>
+            <h3 className="text-2xl font-bold mb-6">{t('floatingNav.almostThere')}</h3>
+            <p className="text-gray-400 mb-6">{t('floatingNav.almostThereDesc')}</p>
 
             <div className="space-y-4 mb-8">
               <div>
-                <label className="block text-sm font-medium text-gray-400 mb-1">Your name *</label>
+                <label className="block text-sm font-medium text-gray-400 mb-1">{t('floatingNav.name')}</label>
                 <input
                   type="text"
                   value={formData.name}
@@ -233,7 +225,7 @@ const FloatingNav = () => {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-400 mb-1">Your email address</label>
+                <label className="block text-sm font-medium text-gray-400 mb-1">{t('floatingNav.email')}</label>
                 <input
                   type="email"
                   value={formData.email}
@@ -243,7 +235,7 @@ const FloatingNav = () => {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-400 mb-1">Tell us more (optional)</label>
+                <label className="block text-sm font-medium text-gray-400 mb-1">{t('floatingNav.tellUsMore')}</label>
                 <textarea
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
@@ -258,7 +250,7 @@ const FloatingNav = () => {
               disabled={!formData.name}
               className="bg-white text-black font-bold py-3 px-8 rounded-full hover:bg-gray-200 transition-colors disabled:opacity-50 disabled:cursor-not-allowed w-full"
             >
-              Send
+              {t('floatingNav.send')}
             </button>
           </motion.div>
         );
@@ -369,7 +361,7 @@ const FloatingNav = () => {
           className="bg-[#2a2a2a] px-5 py-3 rounded-[10px] hover:bg-[#333] transition-colors text-gray-400 hover:text-white font-medium flex items-center gap-3"
         >
           <Menu size={20} />
-          <span>Details</span>
+          <span>{t('carousel.details')}</span>
         </button>
       </motion.div>
     );
@@ -390,13 +382,7 @@ const FloatingNav = () => {
                 layoutId="nav-container"
                 className="bg-black border border-white/10 rounded-[2rem] p-6 md:p-8 shadow-2xl relative overflow-hidden w-full"
               >
-                {/* Progress Bar */}
-                <div className="absolute top-0 left-0 h-1 bg-white/10 w-full">
-                  <motion.div
-                    className="h-full bg-white"
-                    animate={{ width: `${((step + 1) / 4) * 100}%` }}
-                  />
-                </div>
+  
 
                 <div className="flex justify-between items-center mb-8">
                   <div className="flex gap-2">
@@ -443,7 +429,7 @@ const FloatingNav = () => {
                       className="bg-[#2a2a2a] px-5 py-3 rounded-[10px] hover:bg-[#333] transition-colors flex items-center gap-3 group"
                     >
                       <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                      <span className="font-medium text-gray-300">Tell us about your needs</span>
+                      <span className="font-medium text-gray-300">{t('floatingNav.tellUs')}</span>
                       <ChevronRight size={18} className="text-gray-400 group-hover:text-white transition-colors" />
                     </button>
                   </motion.div>

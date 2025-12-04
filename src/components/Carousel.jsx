@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, createContext } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -18,6 +19,7 @@ export const CarouselContext = createContext({
 });
 
 const Carousel = () => {
+    const { t } = useTranslation();
     const [activeSlide, setActiveSlide] = useState(0); // Start from the first slide (index 0)
     const [swiperInstance, setSwiperInstance] = useState(null);
     const containerRef = useRef(null);
@@ -64,27 +66,27 @@ const Carousel = () => {
     const cards = [
         {
             id: 1,
-            title: "Digital Marketing",
-            description: "We collaborated with innovative brands to transform their digital presence—leveraging data-driven strategies and creative campaigns to drive engagement, conversions, and sustainable growth across all channels.",
-            image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
+            title: "Hotel Rivoli",
+            description: "We provided comprehensive digital services for Hotel Rivoli, including elegant design solutions, strategic SEO implementation, and engaging social media management to enhance their online presence and attract more guests.",
+            image: "/Document.png",
             color: "from-purple-500/20 to-pink-500/20",
-            tags: ["SEO", "Social Media", "PPC", "Analytics", "Content Strategy", "Email Marketing"]
+            tags: ["Design", "SEO", "Social Media", "Brand Identity", "Content Strategy", "Digital Marketing"]
         },
         {
             id: 2,
-            title: "Web Development",
-            description: "We build stunning, high-performance websites and web applications that convert visitors into customers—combining cutting-edge technology with seamless user experiences to bring your digital vision to life.",
-            image: "https://images.unsplash.com/photo-1547658719-da2b51169166?w=800&q=80",
+            title: "Simplu",
+            description: "We developed Simplu, a comprehensive management platform designed for diverse business types. Our solution includes robust development, analytics integration, social media tools, and intuitive UI/UX design to streamline business operations.",
+            image: "/Document2.png",
             color: "from-blue-500/20 to-cyan-500/20",
-            tags: ["React", "Next.js", "Node.js", "UI", "UX", "Full-Stack"]
+            tags: ["Development", "Analytics", "Social Media", "UI/UX", "Platform Management", "Business Solutions"]
         },
         {
             id: 3,
-            title: "Brand Strategy",
-            description: "We craft compelling brand identities that resonate with your audience—from high-fidelity prototypes to seamless customer journeys, we help bring new ideas to life with strategic thinking and creative execution.",
-            image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&q=80",
+            title: "Loopalive",
+            description: "We created Loopalive, an innovative AI chat solution that can be seamlessly implemented across any website. Our development and marketing expertise ensured a powerful, user-friendly conversational AI that enhances customer engagement.",
+            image: "/Document3.png",
             color: "from-orange-500/20 to-yellow-500/20",
-            tags: ["Motion Design", "Illustrations", "UI", "UX", "Prototyping", "Brand Identity"]
+            tags: ["Development", "AI Integration", "Marketing", "Chat Solutions", "Customer Engagement", "Technology"]
         }
     ];
 
@@ -128,10 +130,10 @@ const Carousel = () => {
             >
                 <div className="text-left mb-16">
                     <h2 className="text-5xl md:text-6xl font-bold mb-6">
-                        Latest <span className="italic font-serif">Projects</span>
+                        {t('carousel.title')} <span className="italic font-serif">{t('carousel.titleHighlight')}</span>
                     </h2>
                     <p className="text-gray-400 text-lg max-w-2xl">
-                        Discover how we can help transform your business
+                        {t('carousel.description')}
                     </p>
                 </div>
             </motion.div>
@@ -172,11 +174,10 @@ const Carousel = () => {
                                                 className="absolute inset-0 bg-cover bg-center transition-transform duration-700 hover:scale-105"
                                                 style={{ backgroundImage: `url(${card.image})` }}
                                             >
-                                                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+                                                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/0 to-transparent" />
                                             </div>
 
-                                            {/* Gradient Overlay */}
-                                            <div className={`absolute inset-0 bg-gradient-to-br ${card.color} opacity-60 mix-blend-overlay`} />
+
 
                                             {/* Content */}
                                             <div className="relative h-full flex flex-col justify-end p-8 md:p-16 lg:p-24">

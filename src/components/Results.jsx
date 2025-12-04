@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const resultsData = [
   {
@@ -26,6 +27,8 @@ const resultsData = [
 ];
 
 const Results = () => {
+  const { t } = useTranslation();
+
   return (
     <section className="py-20 px-4 md:px-8 lg:px-16 border-t border-white/10">
       <div className="max-w-7xl mx-auto">
@@ -33,21 +36,21 @@ const Results = () => {
           {/* Left side - Title */}
           <div className="md:w-1/2">
             <h2 className="text-4xl md:text-5xl font-bold leading-tight">
-              Trusted by leading B2B companies to improve their <span className="italic font-serif text-[#d4d4d4]">marketing</span>
+              {t('results.title')} <span className="italic font-serif text-[#d4d4d4]">{t('results.titleHighlight')}</span>
             </h2>
           </div>
 
           {/* Right side - Paragraph + Button */}
           <div className="md:w-1/2 flex flex-col items-start md:items-start gap-6">
             <p className="text-lg text-gray-300 max-w-md md:text-left">
-              Partnering with ambitious B2B brands worldwide to build scalable marketing engines and drive measurable ROI.
+              {t('results.description')}
             </p>
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="flex items-center gap-2 border border-white/20 px-6 py-3 rounded-full font-medium hover:bg-white/10 transition-colors"
             >
-              Explore all results
+              {t('results.exploreButton')}
               <ArrowRight size={16} />
             </motion.button>
           </div>

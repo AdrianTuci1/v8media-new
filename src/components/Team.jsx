@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const skills = [
   { name: "Content", x: 0, y: -280 },
@@ -22,22 +23,23 @@ const tags = [
 ];
 
 const Team = () => {
+  const { t } = useTranslation();
+
   return (
     <section className="py-20 px-4 min-h-screen flex flex-col items-center">
 
       {/* Intro Content */}
       <div className="max-w-7xl mx-auto w-full mb-32 grid grid-cols-1 lg:grid-cols-2 gap-16">
         <div>
-          <h4 className="text-[#d4d4d4] font-serif italic text-2xl mb-4">Demand team</h4>
+          <h4 className="text-[#d4d4d4] font-serif italic text-2xl mb-4">{t('team.title')}</h4>
           <h2 className="text-5xl md:text-6xl font-bold leading-[1.1] mb-8">
-            Your own team of <br />
-            <span className="italic font-serif text-[#d4d4d4]">world-class</span> B2B <br />
-            marketing experts
+            {t('team.heading')} <br />
+            <span className="italic font-serif text-[#d4d4d4]">{t('team.headingHighlight')}</span> {t('team.headingRest')}
           </h2>
         </div>
         <div className="flex flex-col justify-between">
           <p className="text-lg text-gray-400 leading-relaxed mb-8">
-            We build custom teams of world-class B2B marketing experts to complement your in-house capabilities. We work closely with your inhouse marketing team to level up your marketing. All members bring deep expertise, and years of B2B marketing experience. Together we have one goal: To build a high performance marketing engine.
+            {t('team.description')}
           </p>
 
           <div className="flex flex-wrap gap-3">
@@ -90,7 +92,7 @@ const Team = () => {
             viewport={{ once: true }}
             transition={{ delay: 1.2 }}
           >
-            <span className="whitespace-nowrap">Meet the team</span>
+            <span className="whitespace-nowrap">{t('team.meetButton') || 'Meet the team'}</span>
             <ArrowUpRight size={18} />
           </motion.div>
         </div>

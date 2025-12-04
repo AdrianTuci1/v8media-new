@@ -1,7 +1,9 @@
 import { motion } from 'framer-motion';
 import { ArrowDown, ArrowRight } from 'lucide-react';
 import { useEffect, useRef, useState, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import Anouncement from './Anouncement';
+
 
 const CursorTrail = () => {
   const containerRef = useRef(null);
@@ -146,13 +148,24 @@ const CursorTrail = () => {
 };
 
 const Hero = () => {
+  const { t } = useTranslation();
+
   return (
     <section className="relative min-h-[100vh] flex flex-col justify-center px-4 md:px-8 lg:px-16 pt-20 overflow-hidden">
       <CursorTrail />
 
-      <div className="absolute bottom-[50px] right-[-140px] -translate-x-1/2 hidden md:block z-0">
+      <div className="absolute bottom-[50px] right-[-140px] -translate-x-1/2 z-2 hidden md:block z-0">
         <Anouncement />
       </div>
+
+      {/* <div className="absolute top-0 left-0 z-0 transform translate-y-[-200px] translate-x-[-600px] w-[800px] h-[800px] opacity-100 hidden lg:block">
+        <img src="/Shape-3.png" alt="" className="w-full h-full object-cover" />
+      </div>
+
+      <div className="absolute bottom-0 right-0 z-0 transform translate-y-[200px] translate-x-[500px] w-[800px] h-[800px] opacity-100 hidden lg:block">
+        <img src="/Shape-8-t 1.png" alt="" className="w-full h-full object-cover" />
+      </div> */}
+
 
       <div className="max-w-7xl mx-auto w-full relative z-10">
         <motion.div
@@ -163,12 +176,11 @@ const Hero = () => {
         >
           <div className="relative">
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] mb-8 relative z-10">
-              We build <span className="italic font-serif text-[#d4d4d4]">high-</span> <br />
-              <span className="italic font-serif text-[#d4d4d4]">performing</span> marketing <br />
-              engines and applications.
+              {t('hero.title')} <span className="italic font-serif text-[#d4d4d4]">{t('hero.titleHighlight1')}</span> <br />
+              <span className="italic font-serif text-[#d4d4d4]">{t('hero.titleHighlight2')}</span> {t('hero.titleRest')}
             </h1>
             
- 
+
           </div> 
 
           <div className="mt-12 pt-8 relative">
@@ -176,7 +188,7 @@ const Hero = () => {
 
             <div className="flex flex-col items-start gap-8">
               <p className="text-lg md:text-xl text-gray-300 max-w-xl">
-                We build, optimize, and scale marketing engines that generate pipeline and improve marketing ROI.
+                {t('hero.description')}
               </p>
 
               <motion.button
@@ -185,7 +197,7 @@ const Hero = () => {
                 onClick={() => document.getElementById('results')?.scrollIntoView({ behavior: 'smooth' })}
                 className="group flex items-center gap-2 text-white px-6 py-3 font-medium "
               >
-                Discover more
+                {t('hero.cta')}
                 <div className="bg-white text-black p-1 rounded-lg transition-colors">
                   <ArrowDown size={16} />
                 </div>

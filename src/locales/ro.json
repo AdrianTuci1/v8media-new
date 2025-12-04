@@ -1,0 +1,97 @@
+{
+  "navbar": {
+    "home": "Acasă",
+    "services": "Servicii",
+    "portfolio": "Portofoliu",
+    "team": "Echipa",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Creăm",
+    "titleHighlight1": "motoare de",
+    "titleHighlight2": "marketing performante",
+    "titleRest": "și aplicații.",
+    "description": "Construim, optimizăm și scalăm motoare de marketing care generează conversii și îmbunătățesc ROI-ul marketingului.",
+    "cta": "Descoperă mai mult"
+  },
+  "results": {
+    "title": "Încrederea companiilor pentru a-și îmbunătăți",
+    "titleHighlight": "marketingul",
+    "description": "Colaborăm cu branduri ambițioase din întreaga lume pentru a construi motoare de marketing scalabile și a genera ROI măsurabil.",
+    "exploreButton": "Explorează toate rezultatele"
+  },
+  "services": {
+    "title": "Îmbunătățește",
+    "titleHighlight": "prezența digitală",
+    "description": "Te ajutăm să-ți îmbunătățești întregul motor de marketing. De la strategie la conținut, publicitate și măsurare.",
+    "items": {
+      "consulting": {
+        "title": "Consultanță",
+        "description": "Ghidare strategică pentru a ajuta afacerea ta să navigheze transformarea digitală și să obțină creștere sustenabilă."
+      },
+      "uxui": {
+        "title": "Design UX/UI",
+        "description": "Creăm designuri intuitive, centrate pe utilizator, care cresc implicarea și livrează experiențe excepționale."
+      },
+      "ads": {
+        "title": "Reclame",
+        "description": "Campanii de publicitate bazate pe date care maximizează ROI-ul și ajung eficient la clienții tăi ideali."
+      },
+      "development": {
+        "title": "Dezvoltare",
+        "description": "Aplicații mobile și web personalizate, construite pentru performanță, scalabilitate și experiență excepțională a utilizatorului."
+      },
+      "ml": {
+        "title": "Machine Learning",
+        "description": "Folosește puterea AI și machine learning pentru a automatiza procesele și a obține informații predictive pentru afacerea ta."
+      }
+    }
+  },
+  "carousel": {
+    "title": "Ultimele",
+    "titleHighlight": "Proiecte",
+    "description": "Descoperă cum te putem ajuta să-ți transformi afacerea",
+    "details": "Detalii"
+  },
+  "floatingNav": {
+    "tellUs": "Spune-ne despre nevoile tale",
+    "getStarted": "Să începem!",
+    "getStartedDesc": "Te rugăm să împărtășești câteva detalii de bază cu noi pentru a putea începe conversația.",
+    "start": "Start",
+    "iNeedTo": "Am nevoie să...",
+    "whichExpert": "Ce expert ai dori să angajezi?",
+    "almostThere": "Aproape gata!",
+    "almostThereDesc": "Spune-ne câteva lucruri despre tine pentru a încheia.",
+    "name": "Numele tău *",
+    "email": "Adresa ta de email",
+    "tellUsMore": "Spune-ne mai multe (opțional)",
+    "continue": "Continuă",
+    "send": "Trimite",
+    "needOptions": [
+      "angajez un designer sau dezvoltator dedicat",
+      "construiesc un produs nou (MVP)",
+      "îmi ofer site-ului sau aplicației un redesign proaspăt",
+      "îmi transform ideea într-un prototip clickabil",
+      "ajutor cu altceva"
+    ],
+    "expertOptions": [
+      "UX Designer", "UI Designer", "Motion Designer",
+      "Front-End Developer", "Back-End Developer", "Project Manager",
+      "DevOps & Cloud", "QA tester"
+    ]
+  },
+  "team": {
+    "title": "Echipa noastră",
+    "heading": "O echipă agilă de",
+    "headingHighlight": "specialiști",
+    "headingRest": "în marketing și development",
+    "description": "Suntem o echipă dedicată de specialiști în marketing digital și development, oferind soluții personalizate pentru afaceri ca și a ta. Ne adaptăm rapid la nevoile tale și lucrăm strâns cu tine pentru a transforma ideile în realitate. Fiecare membru aduce expertiză specifică și pasiune pentru proiecte inovatoare. Împreună, avem un singur scop: Să construim soluții digitale care generează rezultate reale.",
+    "meetButton": "Cunoaște echipa"
+  },
+  "footer": {
+    "title": "În cele din urmă, nu e",
+    "magic": "magie.",
+    "description": "E vorba de skill, experiență și dedicare.",
+    "copyright": "© 2025 V8 Media Agency. Toate drepturile rezervate."
+  }
+}

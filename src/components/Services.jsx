@@ -1,31 +1,10 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
-import { ArrowRight, Monitor, Smartphone, TrendingUp, BrainCircuit } from 'lucide-react';
-
-const services = [
-  {
-    title: "Branding",
-    description: "We build brands that stand out in a crowded market. From visual identity to brand strategy.",
-    icon: <Monitor size={32} />
-  },
-  {
-    title: "Optimised Ads",
-    description: "Data-driven ad campaigns that maximize ROI and reach your ideal customers effectively.",
-    icon: <TrendingUp size={32} />
-  },
-  {
-    title: "App Development",
-    description: "Custom mobile and web applications built for performance, scalability and user experience.",
-    icon: <Smartphone size={32} />
-  },
-  {
-    title: "Machine Learning & AI",
-    description: "Leverage the power of AI to automate processes and gain predictive insights for your business.",
-    icon: <BrainCircuit size={32} />
-  }
-];
+import { ArrowRight, Monitor, Smartphone, TrendingUp, BrainCircuit, Telescope } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const Services = () => {
+  const { t } = useTranslation();
   const sectionRef = useRef(null);
 
   // Track scroll progress within the section
@@ -36,6 +15,35 @@ const Services = () => {
 
   // Transform scroll progress to vertical translation (0px to 400px downward)
   const y = useTransform(scrollYProgress, [0, 1], [0, 400]);
+
+  // Get services data from translations
+  const services = [
+    {
+      title: t('services.items.consulting.title'),
+      description: t('services.items.consulting.description'),
+      icon: <Telescope size={32} />
+    },
+    {
+      title: t('services.items.uxui.title'),
+      description: t('services.items.uxui.description'),
+      icon: <Monitor size={32} />
+    },
+    {
+      title: t('services.items.ads.title'),
+      description: t('services.items.ads.description'),
+      icon: <TrendingUp size={32} />
+    },
+    {
+      title: t('services.items.development.title'),
+      description: t('services.items.development.description'),
+      icon: <Smartphone size={32} />
+    },
+    {
+      title: t('services.items.ml.title'),
+      description: t('services.items.ml.description'),
+      icon: <BrainCircuit size={32} />
+    }
+  ];
 
   return (
     <section ref={sectionRef} id="services" className="py-32 px-4 md:px-8 lg:px-16">
@@ -48,11 +56,11 @@ const Services = () => {
             className="lg:col-span-5 h-fit"
           >
             <h2 className="text-5xl md:text-7xl font-bold leading-[1.1] mb-8">
-              Level up your <br />
-              <span className="italic font-serif text-[#d4d4d4]">digital presence</span>
+              {t('services.title')} <br />
+              <span className="italic font-serif text-[#d4d4d4]">{t('services.titleHighlight')}</span>
             </h2>
             <p className="text-lg text-gray-400 mb-12 max-w-sm leading-relaxed">
-              We help you level up your complete marketing engine. From strategy to content, advertising, and measurement.
+              {t('services.description')}
             </p>
           </motion.div>
 
