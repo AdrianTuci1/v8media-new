@@ -35,8 +35,21 @@ const Carousel = () => {
     // 0.2 - 0.6: Expansion phase (fullscreen with padding and border radius)
     // 0.6 - 1.0: Full screen sticky phase
 
-    // Padding around the carousel (0 initially, 40px when expanded)
+    // Padding around the carousel (0 initially, 40px when expanded, but 0 on mobile)
     const padding = useTransform(scrollYProgress, [0.1, 0.4, 0.8, 1], [0, 40, 40, 0]);
+    
+    // Check if we're on mobile
+    const [isMobile, setIsMobile] = useState(false);
+    
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 768); // md breakpoint in Tailwind
+        };
+        
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
 
     // Height of the carousel (smaller initially, fullscreen when expanded)
     const height = useTransform(scrollYProgress, [0.1, 0.4, 0.8, 1], ["60vh", "100vh", "100vh", "60vh"]);
@@ -163,7 +176,7 @@ const Carousel = () => {
                 <div className="sticky top-0 h-screen overflow-hidden flex flex-col items-center justify-center">
                     {/* Carousel Container with padding */}
                     <motion.div
-                        style={{ padding, height }}
+                        style={{ padding: isMobile ? "5px" : padding, height }}
                         className="absolute inset-x-0 top-1/2 -translate-y-1/2 z-20"
                     >
                         <motion.div
@@ -185,14 +198,14 @@ const Carousel = () => {
                                 {cards.map((card, index) => (
                                     <SwiperSlide key={card.id} className="h-full">
                                         <div
-                                            className={`relative w-full h-full overflow-hidden transition-all duration-500`}
+                                            className={`relative w-full h-full overflow-hidden`}
                                             style={{
                                                 borderRadius: isFullscreen ? '0px' : '16px',
                                             }}
                                         >
                                             {/* Background Image */}
                                             <div
-                                                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 hover:scale-105"
+                                                className="absolute inset-0 bg-cover bg-center hover:scale-105"
                                                 style={{ backgroundImage: `url(${card.image})` }}
                                             >
                                                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/0 to-transparent" />
@@ -202,7 +215,7 @@ const Carousel = () => {
 
                                             {/* Content */}
                                             <div className="relative h-full flex flex-col justify-end p-8 md:p-16 lg:p-24">
-                                                <div className={`transition-all duration-500 transform ${isFullscreen && index === activeSlide
+                                                <div className={`transform ${isFullscreen && index === activeSlide
                                                     ? 'translate-y-0 opacity-100'
                                                     : 'translate-y-10 opacity-0'
                                                     }`}>

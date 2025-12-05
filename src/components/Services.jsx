@@ -69,23 +69,27 @@ const Services = () => {
             {services.map((service, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ delay: index * 0.1 }}
-                className="group relative p-10 rounded-[2rem] bg-black border border-white/5 hover:bg-[#1a1a1a] hover:border-white/20 transition-all duration-500 cursor-default overflow-hidden"
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0 }
+                }}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.1 }}
+                transition={{ delay: index * 0.1, duration: 0.5 }}
+                className="group relative p-10 rounded-[2rem] bg-black border border-white/5 hover:bg-[#1a1a1a] hover:border-white/20 cursor-default overflow-hidden"
               >
                 {/* Background Gradient Effect */}
-                <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100" />
 
                 <div className="relative z-10 flex flex-col sm:flex-row gap-8 items-start sm:items-center">
-                  <div className="p-5 bg-white/5 rounded-2xl group-hover:bg-white group-hover:text-black transition-colors duration-500 shadow-lg">
+                  <div className="p-5 bg-white/5 rounded-2xl group-hover:bg-white group-hover:text-black shadow-lg">
                     {service.icon}
                   </div>
 
                   <div className="flex-1">
                     <h3 className="text-3xl font-bold mb-3">{service.title}</h3>
-                    <p className="text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors">
+                    <p className="text-gray-400 leading-relaxed group-hover:text-gray-300">
                       {service.description}
                     </p>
                   </div>

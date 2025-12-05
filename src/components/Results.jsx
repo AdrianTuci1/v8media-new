@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
+import { useRef } from 'react';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -90,11 +91,15 @@ const Results = () => {
             {resultsData.map((item, index) => (
               <SwiperSlide key={index}>
                 <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="bg-[#101010] p-8 rounded-2xl border border-white/5 hover:border-white/20 hover:bg-[#1a1a1a] transition-all duration-300 group cursor-pointer h-full"
+                  variants={{
+                    hidden: { opacity: 0, y: 20 },
+                    visible: { opacity: 1, y: 0 }
+                  }}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.1 }}
+                  transition={{ delay: index * 0.1, duration: 0.5 }}
+                  className="bg-[#101010] p-8 rounded-2xl border border-white/5 hover:border-white/20 hover:bg-[#1a1a1a] group cursor-pointer h-full"
                   style={{ height: '260px' }}
                 >
                   <div className="mb-8 flex items-center">
@@ -114,8 +119,8 @@ const Results = () => {
                           </div>
                         ))}
                       </div>
-                      <div className="bg-white/5 p-2 rounded-full group-hover:bg-white group-hover:text-black transition-colors">
-                        <ArrowUpRight className="text-gray-400 group-hover:text-black transition-colors" size={20} />
+                      <div className="bg-white/5 p-2 rounded-full group-hover:bg-white group-hover:text-black">
+                        <ArrowUpRight className="text-gray-400 group-hover:text-black" size={20} />
                       </div>
                     </div>
                   </div>
