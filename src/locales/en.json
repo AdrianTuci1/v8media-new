@@ -59,7 +59,7 @@
     "getStartedDesc": "Please share a few basic details with us so we can start the conversation.",
     "start": "Start",
     "iNeedTo": "I need to...",
-    "whichExpert": "Which expert would you like to hire?",
+    "whichExpert": "What type of services would suit you:",
     "almostThere": "Almost there!",
     "almostThereDesc": "Tell us a bit about yourself to wrap it up.",
     "name": "Your name *",
@@ -67,17 +67,24 @@
     "tellUsMore": "Tell us more (optional)",
     "continue": "Continue",
     "send": "Send",
+    "sending": "Sending...",
+    "messageReceived": "We received your message!",
+    "messageReceivedDesc": "Thank you for reaching out. We'll get back to you as soon as possible.",
+    "close": "Close",
+    "errorTitle": "Something went wrong",
+    "errorMessage": "There was a problem submitting your message. Please try again.",
+    "tryAgain": "Try Again",
     "needOptions": [
+      "marketing",
       "hire a dedicated designer or developer",
       "build a new product (MVP)",
+      "implement a data lake",
       "give my website or app a fresh redesign",
       "turn my idea into a clickable prototype",
       "help with something else"
     ],
     "expertOptions": [
-      "UX Designer", "UI Designer", "Motion Designer",
-      "Front-End Developer", "Back-End Developer", "Project Manager",
-      "DevOps & Cloud", "QA tester"
+      "Consulting", "Design", "Development", "Marketing", "Machine Learning"
     ]
   },
   "team": {
@@ -93,5 +100,49 @@
     "magic": "magic.",
     "description": "It's all skill, experience and dedication.",
     "copyright": "© 2025 V8 Media Agency. All rights reserved."
+  },
+  "resultsData": {
+    "loopalive": {
+      "company": "Loopalive",
+      "stats": [
+        { "value": "60+", "label": "Inbound Leads" },
+        { "value": "66%", "label": "Win rate" }
+      ]
+    },
+    "hotelRivoli": {
+      "company": "Hotel Rivoli",
+      "stats": [
+        { "value": "200%", "label": "Return on ad spend" },
+        { "value": "53%", "label": "More qualified pipeline" }
+      ]
+    },
+    "simplu": {
+      "company": "Simplu",
+      "stats": [
+        { "value": "12%", "label": "More Leads" },
+        { "value": "400%", "label": "High-intent Downloads" }
+      ]
+    }
+  },
+  "announcement": {
+    "text": "Accelerated data lake implementation with AI-powered tools",
+    "brand": "V8MEDIA"
+  },
+  "carouselCards": {
+    "loopalive": {
+      "title": "Loopalive",
+      "description": "We created Loopalive, an innovative AI chat solution that can be seamlessly implemented across any website. Our development and marketing expertise ensured a powerful, user-friendly conversational AI that enhances customer engagement.",
+      "tags": ["Development", "AI Integration", "Marketing", "Chat Solutions", "Customer Engagement", "Technology"]
+    },
+    "hotelRivoli": {
+      "title": "Hotel Rivoli",
+      "description": "We provided comprehensive digital services for Hotel Rivoli, including elegant design solutions, strategic SEO implementation, and engaging social media management to enhance their online presence and attract more guests.",
+      "tags": ["Design", "SEO", "Social Media", "Brand Identity", "Content Strategy", "Digital Marketing"]
+    },
+    "simplu": {
+      "title": "Simplu",
+      "description": "We developed Simplu, a comprehensive management platform designed for diverse business types. Our solution includes robust development, analytics integration, social media tools, and intuitive UI/UX design to streamline business operations.",
+      "tags": ["Development", "Analytics", "Social Media", "UI/UX", "Platform Management", "Business Solutions"]
+    }
   }
 }

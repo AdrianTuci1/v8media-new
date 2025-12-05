@@ -58,8 +58,8 @@
     "getStarted": "Să începem!",
     "getStartedDesc": "Te rugăm să împărtășești câteva detalii de bază cu noi pentru a putea începe conversația.",
     "start": "Start",
-    "iNeedTo": "Am nevoie să...",
-    "whichExpert": "Ce expert ai dori să angajezi?",
+    "iNeedTo": "Am nevoie sa...",
+    "whichExpert": "Ce tip de servicii ti s-ar potrivi:",
     "almostThere": "Aproape gata!",
     "almostThereDesc": "Spune-ne câteva lucruri despre tine pentru a încheia.",
     "name": "Numele tău *",
@@ -67,24 +67,35 @@
     "tellUsMore": "Spune-ne mai multe (opțional)",
     "continue": "Continuă",
     "send": "Trimite",
+    "sending": "Se trimite...",
+    "messageReceived": "Am primit mesajul tău!",
+    "messageReceivedDesc": "Mulțumim că ne-ai contactat. Vom reveni la tine cât mai curând posibil.",
+    "close": "Închide",
+    "errorTitle": "A apărut o problemă",
+    "errorMessage": "A apărut o problemă la trimiterea mesajului. Te rugăm reîncearcă.",
+    "tryAgain": "Reîncearcă",
     "needOptions": [
+      "marketing",
       "angajez un designer sau dezvoltator dedicat",
       "construiesc un produs nou (MVP)",
+      "dezvoltare lac de date",
       "îmi ofer site-ului sau aplicației un redesign proaspăt",
       "îmi transform ideea într-un prototip clickabil",
       "ajutor cu altceva"
     ],
     "expertOptions": [
-      "UX Designer", "UI Designer", "Motion Designer",
-      "Front-End Developer", "Back-End Developer", "Project Manager",
-      "DevOps & Cloud", "QA tester"
+      "Consultanta",
+      "Design",
+      "Dezvoltare",
+      "Marketing",
+      "Machine Learning"
     ]
   },
   "team": {
     "title": "Echipa noastră",
     "heading": "O echipă agilă de",
     "headingHighlight": "specialiști",
-    "headingRest": "în marketing și development",
+    "headingRest": "în marketing și dezvoltare",
     "description": "Suntem o echipă dedicată de specialiști în marketing digital și development, oferind soluții personalizate pentru afaceri ca și a ta. Ne adaptăm rapid la nevoile tale și lucrăm strâns cu tine pentru a transforma ideile în realitate. Fiecare membru aduce expertiză specifică și pasiune pentru proiecte inovatoare. Împreună, avem un singur scop: Să construim soluții digitale care generează rezultate reale.",
     "meetButton": "Cunoaște echipa"
   },
@@ -93,5 +104,88 @@
     "magic": "magie.",
     "description": "E vorba de skill, experiență și dedicare.",
     "copyright": "© 2025 V8 Media Agency. Toate drepturile rezervate."
+  },
+  "resultsData": {
+    "loopalive": {
+      "company": "Loopalive",
+      "stats": [
+        {
+          "value": "60+",
+          "label": "Lead-uri primite"
+        },
+        {
+          "value": "66%",
+          "label": "Rată de succes"
+        }
+      ]
+    },
+    "hotelRivoli": {
+      "company": "Hotel Rivoli",
+      "stats": [
+        {
+          "value": "200%",
+          "label": "Venit pe reclama"
+        },
+        {
+          "value": "53%",
+          "label": "Pipeline mai calificat"
+        }
+      ]
+    },
+    "simplu": {
+      "company": "Simplu",
+      "stats": [
+        {
+          "value": "12%",
+          "label": "Mai multe Lead-uri"
+        },
+        {
+          "value": "400%",
+          "label": "Descărcări cu intenție ridicată"
+        }
+      ]
+    }
+  },
+  "announcement": {
+    "text": "Implementare accelerată a lacului de date cu instrumente bazate pe AI",
+    "brand": "V8MEDIA"
+  },
+  "carouselCards": {
+    "loopalive": {
+      "title": "Loopalive",
+      "description": "Am creat Loopalive, o soluție inovatoare de chat AI care poate fi implementată fără probleme pe orice site web. Expertiza noastră în dezvoltare și marketing a asigurat un AI conversațional puternic și prietenos care îmbunătățește implicarea clienților.",
+      "tags": [
+        "Dezvoltare",
+        "Integrare AI",
+        "Marketing",
+        "Soluții de Chat",
+        "Implicarea Clienților",
+        "Tehnologie"
+      ]
+    },
+    "hotelRivoli": {
+      "title": "Hotel Rivoli",
+      "description": "Am furnizat servicii digitale complete pentru Hotel Rivoli, inclusiv soluții de design elegant, implementare strategică SEO și management implicat al rețelelor sociale pentru a-și îmbunătăți prezența online și a atrage mai mulți oaspeți.",
+      "tags": [
+        "Design",
+        "SEO",
+        "Social Media",
+        "Identitate de Brand",
+        "Strategie de Conținut",
+        "Marketing Digital"
+      ]
+    },
+    "simplu": {
+      "title": "Simplu",
+      "description": "Am dezvoltat Simplu, o platformă de management completă concepută pentru diverse tipuri de afaceri. Soluția noastră include dezvoltare robustă, integrare analytics, unelte de social media și design UI/UX intuitiv pentru a eficientiza operațiunile de afaceri.",
+      "tags": [
+        "Dezvoltare",
+        "Analytics",
+        "Social Media",
+        "UI/UX",
+        "Management Platformă",
+        "Soluții de Afaceri"
+      ]
+    }
   }
 }

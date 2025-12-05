@@ -65,28 +65,49 @@ const Carousel = () => {
     // Sample card data with detailed info and tags
     const cards = [
         {
+            id: 3,
+            title: t('carouselCards.loopalive.title'),
+            description: t('carouselCards.loopalive.description'),
+            image: "/Document3.png",
+            color: "from-orange-500/20 to-yellow-500/20",
+            tags: [
+                t('carouselCards.loopalive.tags.0'),
+                t('carouselCards.loopalive.tags.1'),
+                t('carouselCards.loopalive.tags.2'),
+                t('carouselCards.loopalive.tags.3'),
+                t('carouselCards.loopalive.tags.4'),
+                t('carouselCards.loopalive.tags.5')
+            ]
+        },
+        {
             id: 1,
-            title: "Hotel Rivoli",
-            description: "We provided comprehensive digital services for Hotel Rivoli, including elegant design solutions, strategic SEO implementation, and engaging social media management to enhance their online presence and attract more guests.",
+            title: t('carouselCards.hotelRivoli.title'),
+            description: t('carouselCards.hotelRivoli.description'),
             image: "/Document.png",
             color: "from-purple-500/20 to-pink-500/20",
-            tags: ["Design", "SEO", "Social Media", "Brand Identity", "Content Strategy", "Digital Marketing"]
+            tags: [
+                t('carouselCards.hotelRivoli.tags.0'),
+                t('carouselCards.hotelRivoli.tags.1'),
+                t('carouselCards.hotelRivoli.tags.2'),
+                t('carouselCards.hotelRivoli.tags.3'),
+                t('carouselCards.hotelRivoli.tags.4'),
+                t('carouselCards.hotelRivoli.tags.5')
+            ]
         },
         {
             id: 2,
-            title: "Simplu",
-            description: "We developed Simplu, a comprehensive management platform designed for diverse business types. Our solution includes robust development, analytics integration, social media tools, and intuitive UI/UX design to streamline business operations.",
+            title: t('carouselCards.simplu.title'),
+            description: t('carouselCards.simplu.description'),
             image: "/Document2.png",
             color: "from-blue-500/20 to-cyan-500/20",
-            tags: ["Development", "Analytics", "Social Media", "UI/UX", "Platform Management", "Business Solutions"]
-        },
-        {
-            id: 3,
-            title: "Loopalive",
-            description: "We created Loopalive, an innovative AI chat solution that can be seamlessly implemented across any website. Our development and marketing expertise ensured a powerful, user-friendly conversational AI that enhances customer engagement.",
-            image: "/Document3.png",
-            color: "from-orange-500/20 to-yellow-500/20",
-            tags: ["Development", "AI Integration", "Marketing", "Chat Solutions", "Customer Engagement", "Technology"]
+            tags: [
+                t('carouselCards.simplu.tags.0'),
+                t('carouselCards.simplu.tags.1'),
+                t('carouselCards.simplu.tags.2'),
+                t('carouselCards.simplu.tags.3'),
+                t('carouselCards.simplu.tags.4'),
+                t('carouselCards.simplu.tags.5')
+            ]
         }
     ];
 
@@ -128,7 +149,7 @@ const Carousel = () => {
                 style={{ opacity: textOpacity, y: textY }}
                 className="relative top-20 left-0 right-0 z-10 container mx-auto"
             >
-                <div className="text-left mb-16">
+                <div className="text-left mb-16 p-4">
                     <h2 className="text-5xl md:text-6xl font-bold mb-6">
                         {t('carousel.title')} <span className="italic font-serif">{t('carousel.titleHighlight')}</span>
                     </h2>

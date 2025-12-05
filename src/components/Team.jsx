@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { useState } from 'react';
 
 const skills = [
   { name: "Content", x: 0, y: -280 },
@@ -14,16 +15,17 @@ const skills = [
 ];
 
 const teamPhotos = [
-  "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-  "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+  "/victor.png",
+  "/tuci.png"
 ];
 
 const tags = [
-  "LinkedIn", "Content", "Google", "Video", "Design", "Motion", "Email", "AI"
+  "Data Analysis", "Content", "UI/UX", "Marketing", "Design", "Development", "Machine Learning", "AI"
 ];
 
 const Team = () => {
   const { t } = useTranslation();
+  const [hoveredImage, setHoveredImage] = useState(null);
 
   return (
     <section className="py-20 px-4 min-h-screen flex flex-col items-center">
@@ -55,12 +57,10 @@ const Team = () => {
       {/* Visualization */}
       <div className="relative w-full max-w-6xl mx-auto flex items-center justify-center py-20">
 
-
-
-        {/* Two Cards - Left and Right */}
-        <div className="relative h-96 flex items-center justify-center gap-2">
+        {/* Desktop Layout - Two Cards Side by Side */}
+        <div className="hidden md:flex relative h-96 items-center justify-center gap-2">
           {teamPhotos.map((photo, index) => {
-            // Left card tilted left (-18deg), right card tilted right (+18deg)
+            // Left card tilted left (-4deg), right card tilted right (+4deg)
             const rotation = index === 0 ? -4 : 4;
             const cardWidth = 288; // w-72 = 288px
             const cardHeight = 384; // h-96 = 384px
@@ -68,7 +68,7 @@ const Team = () => {
             return (
               <motion.div
                 key={index}
-                className="rounded-2xl overflow-hidden border-4 border-black shadow-2xl"
+                className="rounded-2xl overflow-hidden border-4 border-black shadow-2xl relative"
                 style={{
                   width: `${cardWidth}px`,
                   height: `${cardHeight}px`,
@@ -78,23 +78,71 @@ const Team = () => {
                 whileInView={{ opacity: 1, scale: 1, rotate: rotation }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.5 + (index * 0.2) }}
+                onMouseEnter={() => setHoveredImage(index)}
+                onMouseLeave={() => setHoveredImage(null)}
               >
                 <img src={photo} alt="Team member" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" />
+                
+
               </motion.div>
             );
           })}
 
-          {/* CTA Button */}
+          {/* Arrow above left image - Desktop only */}
           <motion.div
-            className="absolute -bottom-10 left-1/2 -translate-x-1/2 z-50 bg-[#4ade80] text-black px-8 py-4 rounded-full flex items-center gap-2 font-bold shadow-xl cursor-pointer hover:bg-white transition-colors"
-            initial={{ y: 20, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
+            className="absolute -bottom-20 -right-[32%] -translate-x-1/2 z-40"
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 1.2 }}
+            transition={{ delay: 1.0 }}
           >
-            <span className="whitespace-nowrap">{t('team.meetButton') || 'Meet the team'}</span>
-            <ArrowUpRight size={18} />
+            <div className={`px-4 py-2 rounded-full border border-white/20 text-sm text-white text-center mt-2 font-semibold transition-colors cursor-default ${hoveredImage === 1 ? 'bg-[#4ade80] text-black' : 'hover:bg-white hover:text-black'} translate-x-8 translate-y-2`}>
+              Software Engineer
+            </div>
+            <img src="/Arrow 13.png" alt="Arrow" className="w-24 h-24 rotate-220" />
           </motion.div>
+
+          {/* Arrow below right image - Desktop only */}
+          <motion.div
+            className="absolute -top-15 -left-[5%] -translate-x-1/2 z-40"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 1.0 }}
+          >
+            <img src="/Arrow 13.png" alt="Arrow" className="w-24 h-24 rotate-20" />
+            <div className={`px-4 py-2 rounded-full border border-white/20 text-sm text-white text-center mt-2 font-semibold transition-colors cursor-default ${hoveredImage === 0 ? 'bg-[#4ade80] text-black' : 'hover:bg-white hover:text-black'} -translate-x-18 -translate-y-4`}>
+              Marketing specialist
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Mobile Layout - Column */}
+        <div className="md:hidden flex flex-col items-center justify-center gap-8 w-full">
+          {teamPhotos.map((photo, index) => (
+            <motion.div
+              key={`mobile-${index}`}
+              className="rounded-2xl overflow-hidden border-4 border-black shadow-2xl relative w-72 h-96"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.3 + (index * 0.2) }}
+              onMouseEnter={() => setHoveredImage(index)}
+              onMouseLeave={() => setHoveredImage(null)}
+            >
+              <img src={photo} alt="Team member" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" />
+              
+              {/* Tag on card */}
+              <div className={`absolute bottom-4 left-4 px-4 py-2 rounded-full border border-white/20 text-sm text-white font-semibold transition-colors cursor-default ${hoveredImage === index ? 'bg-[#4ade80] text-black' : 'bg-black/50 backdrop-blur-sm'}`}>
+                {index === 0 ? 'Marketing Specialist' : 'Software Engineer'}
+              </div>
+              
+              {/* Name below tag */}
+              <div className={`absolute bottom-16 left-4 text-lg font-bold transition-colors ${hoveredImage === index ? 'text-white' : 'text-white/80'}`}>
+                {index === 0 ? 'Victor Georgescu' : 'Adrian Tucicovenco'}
+              </div>
+            </motion.div>
+          ))}
         </div>
 
       </div>

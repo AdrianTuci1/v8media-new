@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronRight, ChevronLeft, Check, Menu, Minus } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
+import emailjs from '@emailjs/browser';
+
 const FloatingNav = () => {
   const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
@@ -19,6 +21,9 @@ const FloatingNav = () => {
   const [needs, setNeeds] = useState([]);
   const [experts, setExperts] = useState([]);
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
     let hasAutoOpened = false;
@@ -86,6 +91,9 @@ const FloatingNav = () => {
     setNeeds([]);
     setExperts([]);
     setFormData({ name: '', email: '', message: '' });
+    setIsSubmitting(false);
+    setIsSubmitted(false);
+    setHasError(false);
   };
 
   const handleClose = () => {
@@ -98,6 +106,43 @@ const FloatingNav = () => {
       setList(list.filter(i => i !== item));
     } else {
       setList([...list, item]);
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setHasError(false);
+    
+    try {
+      const form = e.target;
+      
+      // Prepare template parameters for EmailJS
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        message: formData.message,
+        needs: needs.join(', '),
+        experts: experts.join(', ')
+      };
+      
+      // Send email using EmailJS
+      await emailjs.send(
+        'service_9qp430j', // Replace with your EmailJS service ID
+        'template_htti40r', // Replace with your EmailJS template ID
+        templateParams,
+        'Pi5TSYUzr6s1EDxpB'   // Replace with your EmailJS public key
+      );
+      
+      // Show success message
+      setIsSubmitted(true);
+      setStep(4); // Move to success step
+    } catch (error) {
+      console.error('EmailJS error:', error);
+      setHasError(true);
+      setStep(5); // Move to error step
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -213,45 +258,108 @@ const FloatingNav = () => {
             <h3 className="text-2xl font-bold mb-6">{t('floatingNav.almostThere')}</h3>
             <p className="text-gray-400 mb-6">{t('floatingNav.almostThereDesc')}</p>
 
-            <div className="space-y-4 mb-8">
+            <form onSubmit={handleSubmit} className="space-y-4 mb-8">
               <div>
                 <label className="block text-sm font-medium text-gray-400 mb-1">{t('floatingNav.name')}</label>
                 <input
                   type="text"
+                  name="name"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   className="w-full bg-white/5 border border-white/10 rounded-xl p-3 focus:outline-none focus:border-white/30 transition-colors"
                   placeholder="John Doe"
+                  required
                 />
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-400 mb-1">{t('floatingNav.email')}</label>
                 <input
                   type="email"
+                  name="email"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   className="w-full bg-white/5 border border-white/10 rounded-xl p-3 focus:outline-none focus:border-white/30 transition-colors"
                   placeholder="john@example.com"
+                  required
                 />
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-400 mb-1">{t('floatingNav.tellUsMore')}</label>
                 <textarea
+                  name="message"
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   className="w-full bg-white/5 border border-white/10 rounded-xl p-3 focus:outline-none focus:border-white/30 transition-colors h-24 resize-none"
                   placeholder="Any specific details..."
                 />
               </div>
-            </div>
 
+              <button
+                type="submit"
+                disabled={!formData.name || !formData.email || isSubmitting}
+                className="bg-white text-black font-bold py-3 px-8 rounded-full hover:bg-gray-200 transition-colors disabled:opacity-50 disabled:cursor-not-allowed w-full"
+              >
+                {isSubmitting ? t('floatingNav.sending') : t('floatingNav.send')}
+              </button>
+            </form>
+          </motion.div>
+        );
+      case 4:
+        return (
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -20 }}
+            className="text-center"
+          >
+            <div className="flex justify-center mb-6">
+              <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center">
+                <Check size={32} className="text-white" />
+              </div>
+            </div>
+            <h3 className="text-2xl font-bold mb-4">{t('floatingNav.messageReceived')}</h3>
+            <p className="text-gray-400 mb-8 max-w-sm mx-auto">
+              {t('floatingNav.messageReceivedDesc')}
+            </p>
             <button
               onClick={handleClose}
-              disabled={!formData.name}
-              className="bg-white text-black font-bold py-3 px-8 rounded-full hover:bg-gray-200 transition-colors disabled:opacity-50 disabled:cursor-not-allowed w-full"
+              className="bg-white text-black font-bold py-3 px-8 rounded-full hover:bg-gray-200 transition-colors w-full"
             >
-              {t('floatingNav.send')}
+              {t('floatingNav.close')}
             </button>
+          </motion.div>
+        );
+      case 5:
+        return (
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -20 }}
+            className="text-center"
+          >
+            <div className="flex justify-center mb-6">
+              <div className="w-16 h-16 bg-red-500 rounded-full flex items-center justify-center">
+                <X size={32} className="text-white" />
+              </div>
+            </div>
+            <h3 className="text-2xl font-bold mb-4">{t('floatingNav.errorTitle')}</h3>
+            <p className="text-gray-400 mb-8 max-w-sm mx-auto">
+              {t('floatingNav.errorMessage')}
+            </p>
+            <div className="flex gap-4">
+              <button
+                onClick={() => setStep(3)}
+                className="bg-white/10 text-white font-bold py-3 px-8 rounded-full hover:bg-white/20 transition-colors flex-1"
+              >
+                {t('floatingNav.tryAgain')}
+              </button>
+              <button
+                onClick={handleClose}
+                className="bg-white text-black font-bold py-3 px-8 rounded-full hover:bg-gray-200 transition-colors flex-1"
+              >
+                {t('floatingNav.close')}
+              </button>
+            </div>
           </motion.div>
         );
     }
@@ -386,7 +494,7 @@ const FloatingNav = () => {
 
                 <div className="flex justify-between items-center mb-8">
                   <div className="flex gap-2">
-                    {[0, 1, 2, 3].map((s) => (
+                    {[0, 1, 2, 3, 4, 5].map((s) => (
                       <div
                         key={s}
                         className={`w-2 h-2 rounded-full transition-colors ${s <= step ? 'bg-white' : 'bg-white/20'}`}
