@@ -13,23 +13,23 @@ import simpluImage from '../assets/simplu.png';
 
 const Results = () => {
   const { t } = useTranslation();
-  
+
   // Get results data from translations
   const resultsData = [
-    {
-      company: t('resultsData.hotelRivoli.company'),
-      image: rivoliImage,
-      stats: [
-        { value: t('resultsData.hotelRivoli.stats.0.value'), label: t('resultsData.hotelRivoli.stats.0.label') },
-        { value: t('resultsData.hotelRivoli.stats.1.value'), label: t('resultsData.hotelRivoli.stats.1.label') }
-      ]
-    },
     {
       company: t('resultsData.loopalive.company'),
       image: loopaImage,
       stats: [
         { value: t('resultsData.loopalive.stats.0.value'), label: t('resultsData.loopalive.stats.0.label') },
         { value: t('resultsData.loopalive.stats.1.value'), label: t('resultsData.loopalive.stats.1.label') }
+      ]
+    },
+    {
+      company: t('resultsData.hotelRivoli.company'),
+      image: rivoliImage,
+      stats: [
+        { value: t('resultsData.hotelRivoli.stats.0.value'), label: t('resultsData.hotelRivoli.stats.0.label') },
+        { value: t('resultsData.hotelRivoli.stats.1.value'), label: t('resultsData.hotelRivoli.stats.1.label') }
       ]
     },
     {
@@ -43,7 +43,7 @@ const Results = () => {
   ];
 
   return (
-    <section className="py-20 px-4 md:px-8 lg:px-16 border-t border-white/10 mx-4 md:mx-8 lg:mx-16">
+    <section className="py-20 px-[0px] md:px-8 lg:px-16 border-t border-white/10 mx-4 md:mx-8 lg:mx-16">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-16 gap-8">
           {/* Left side - Title */}
@@ -75,6 +75,8 @@ const Results = () => {
             spaceBetween={16}
             slidesPerView={1.2}
             centeredSlides={false}
+            slidesOffsetBefore={0}
+            slidesOffsetAfter={0}
             breakpoints={{
               900: {
                 slidesPerView: 2,
@@ -141,6 +143,7 @@ const customSwiperStyles = `
 .results-swiper .swiper-pagination {
   position: static;
   margin-top: 1.5rem;
+  padding-inline: -1rem;
 }
 
 .results-swiper .swiper-pagination-bullet {

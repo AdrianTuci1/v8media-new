@@ -1,18 +1,8 @@
-import { motion } from 'framer-motion';
+import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
-const skills = [
-  { name: "Content", x: 0, y: -280 },
-  { name: "Google", x: 240, y: -200 },
-  { name: "Video", x: 350, y: 0 },
-  { name: "Design", x: 240, y: 200 },
-  { name: "Motion", x: 0, y: 280 },
-  { name: "Email", x: -240, y: 200 },
-  { name: "AI", x: -350, y: 0 },
-  { name: "LinkedIn", x: -240, y: -200 },
-];
 
 const teamPhotos = [
   "/victor.png",
@@ -82,7 +72,7 @@ const Team = () => {
                 onMouseLeave={() => setHoveredImage(null)}
               >
                 <img src={photo} alt="Team member" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" />
-                
+
 
               </motion.div>
             );
@@ -120,33 +110,58 @@ const Team = () => {
         {/* Mobile Layout - Column */}
         <div className="md:hidden flex flex-col items-center justify-center gap-8 w-full">
           {teamPhotos.map((photo, index) => (
-            <motion.div
-              key={`mobile-${index}`}
-              className="rounded-2xl overflow-hidden border-4 border-black shadow-2xl relative w-72 h-96"
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.3 + (index * 0.2) }}
-              onMouseEnter={() => setHoveredImage(index)}
-              onMouseLeave={() => setHoveredImage(null)}
-            >
-              <img src={photo} alt="Team member" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" />
-              
-              {/* Tag on card */}
-              <div className={`absolute bottom-4 left-4 px-4 py-2 rounded-full border border-white/20 text-sm text-white font-semibold transition-colors cursor-default ${hoveredImage === index ? 'bg-[#4ade80] text-black' : 'bg-black/50 backdrop-blur-sm'}`}>
-                {index === 0 ? 'Marketing Specialist' : 'Software Engineer'}
-              </div>
-              
-              {/* Name below tag */}
-              <div className={`absolute bottom-16 left-4 text-lg font-bold transition-colors ${hoveredImage === index ? 'text-white' : 'text-white/80'}`}>
-                {index === 0 ? 'Victor Georgescu' : 'Adrian Tucicovenco'}
-              </div>
-            </motion.div>
+            <MobileTeamCard key={`mobile-${index}`} photo={photo} index={index} />
           ))}
         </div>
 
       </div>
     </section>
+  );
+};
+
+const MobileTeamCard = ({ photo, index }) => {
+  const cardRef = useRef(null);
+  const [isFocused, setIsFocused] = useState(false);
+
+  const { scrollYProgress } = useScroll({
+    target: cardRef,
+    offset: ["center end", "center start"]
+  });
+
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    // Check if the card is roughly in the center of the viewport
+    if (latest > 0.4 && latest < 0.6) {
+      if (!isFocused) setIsFocused(true);
+    } else {
+      if (isFocused) setIsFocused(false);
+    }
+  });
+
+  return (
+    <motion.div
+      ref={cardRef}
+      className="rounded-2xl overflow-hidden border-4 border-black shadow-2xl relative w-72 h-96"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: 0.3 + (index * 0.2) }}
+    >
+      <img
+        src={photo}
+        alt="Team member"
+        className={`w-full h-full object-cover transition-all duration-500 ${isFocused ? 'grayscale-0' : 'grayscale'}`}
+      />
+
+      {/* Tag on card */}
+      <div className={`absolute bottom-4 left-4 px-4 py-2 rounded-full border border-white/20 text-sm font-semibold transition-colors cursor-default ${isFocused ? 'bg-[#4ade80] text-black' : 'bg-black/50 backdrop-blur-sm text-white'}`}>
+        {index === 0 ? 'Marketing Specialist' : 'Software Engineer'}
+      </div>
+
+      {/* Name below tag */}
+      <div className={`absolute bottom-16 left-4 text-lg font-bold transition-colors ${isFocused ? 'text-white' : 'text-white/80'}`}>
+        {index === 0 ? 'Victor Georgescu' : 'Adrian Tucicovenco'}
+      </div>
+    </motion.div>
   );
 };
 

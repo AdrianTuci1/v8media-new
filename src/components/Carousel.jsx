@@ -37,15 +37,15 @@ const Carousel = () => {
 
     // Padding around the carousel (0 initially, 40px when expanded, but 0 on mobile)
     const padding = useTransform(scrollYProgress, [0.1, 0.4, 0.8, 1], [0, 40, 40, 0]);
-    
+
     // Check if we're on mobile
     const [isMobile, setIsMobile] = useState(false);
-    
+
     useEffect(() => {
         const checkMobile = () => {
             setIsMobile(window.innerWidth < 768); // md breakpoint in Tailwind
         };
-        
+
         checkMobile();
         window.addEventListener('resize', checkMobile);
         return () => window.removeEventListener('resize', checkMobile);
@@ -187,10 +187,10 @@ const Carousel = () => {
                                 modules={[Navigation, Pagination]}
                                 slidesPerView={getSlidesPerView()}
                                 centeredSlides={isFullscreen}
-                                spaceBetween={isFullscreen ? 0 : 24}
+                                spaceBetween={isFullscreen ? 0 : (isMobile ? 5 : 24)}
                                 initialSlide={0}
-                                slidesOffsetBefore={isFullscreen ? 0 : 40}
-                                slidesOffsetAfter={isFullscreen ? 0 : 40}
+                                slidesOffsetBefore={isFullscreen ? 0 : (isMobile ? 5 : 40)}
+                                slidesOffsetAfter={isFullscreen ? 0 : (isMobile ? 5 : 40)}
                                 onSwiper={setSwiperInstance}
                                 onSlideChange={(swiper) => setActiveSlide(swiper.activeIndex)}
                                 className="h-full w-full"
@@ -205,7 +205,7 @@ const Carousel = () => {
                                         >
                                             {/* Background Image */}
                                             <div
-                                                className="absolute inset-0 bg-cover bg-center hover:scale-105"
+                                                className="absolute inset-0 bg-cover bg-center"
                                                 style={{ backgroundImage: `url(${card.image})` }}
                                             >
                                                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/0 to-transparent" />
@@ -213,14 +213,7 @@ const Carousel = () => {
 
 
 
-                                            {/* Content */}
-                                            <div className="relative h-full flex flex-col justify-end p-8 md:p-16 lg:p-24">
-                                                <div className={`transform ${isFullscreen && index === activeSlide
-                                                    ? 'translate-y-0 opacity-100'
-                                                    : 'translate-y-10 opacity-0'
-                                                    }`}>
-                                                </div>
-                                            </div>
+
                                         </div>
                                     </SwiperSlide>
                                 ))}

@@ -75,10 +75,10 @@
     "errorMessage": "A apărut o problemă la trimiterea mesajului. Te rugăm reîncearcă.",
     "tryAgain": "Reîncearcă",
     "needOptions": [
-      "marketing",
+      "creez campanii de marketing",
       "angajez un designer sau dezvoltator dedicat",
       "construiesc un produs nou (MVP)",
-      "dezvoltare lac de date",
+      "implementez un lac de date",
       "îmi ofer site-ului sau aplicației un redesign proaspăt",
       "îmi transform ideea într-un prototip clickabil",
       "ajutor cu altceva"
@@ -88,7 +88,7 @@
       "Design",
       "Dezvoltare",
       "Marketing",
-      "Machine Learning"
+      "Machine Learning/AI"
     ]
   },
   "team": {

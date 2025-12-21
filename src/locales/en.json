@@ -75,7 +75,7 @@
     "errorMessage": "There was a problem submitting your message. Please try again.",
     "tryAgain": "Try Again",
     "needOptions": [
-      "marketing",
+      "create marketing campaigns",
       "hire a dedicated designer or developer",
       "build a new product (MVP)",
       "implement a data lake",
@@ -84,7 +84,7 @@
       "help with something else"
     ],
     "expertOptions": [
-      "Consulting", "Design", "Development", "Marketing", "Machine Learning"
+      "Consulting", "Design", "Development", "Marketing", "Machine Learning/AI"
     ]
   },
   "team": {
